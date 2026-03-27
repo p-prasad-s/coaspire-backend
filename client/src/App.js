@@ -159,7 +159,7 @@ const getDefaultGuardianPos = () => ({
 const resolveApiBaseUrl = () => {
     // Use production URL for native apps, localhost for web dev
     if (Capacitor?.isNativePlatform?.()) {
-        return 'https://coaspire-server.onrender.com';  // Replace with your actual Render URL
+        return 'https://coaspire-backend-1.onrender.com';  // Production Render URL
     }
     return process.env.REACT_APP_API_BASE || 'http://localhost:3000';
 };
