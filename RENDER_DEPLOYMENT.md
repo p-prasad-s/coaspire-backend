@@ -41,16 +41,16 @@
    - Value: `https://coaspire-ai-engine.onrender.com` (paste the URL from Step 1)
 5. Click **"Create Web Service"**
 6. Wait for deployment to complete (~2-5 minutes)
-7. **Copy the deployed URL** (e.g., `https://coaspire-server.onrender.com`)
+7. **Copy the deployed URL**: `https://coaspire-backend-1.onrender.com`
 
 ## Step 3: Update React App for Production
 
-Update `client/src/App.js` line 89 with your actual Render server URL:
+Update `client/src/App.js` with your actual Render server URL:
 
 ```javascript
 const resolveApiBaseUrl = () => {
   if (Capacitor?.isNativePlatform?.()) {
-    return 'https://YOUR-ACTUAL-SERVER-URL.onrender.com'; // Replace with Step 2 URL
+    return 'https://coaspire-backend-1.onrender.com';
   }
   return process.env.REACT_APP_API_BASE || 'http://localhost:3000';
 };
@@ -58,7 +58,7 @@ const resolveApiBaseUrl = () => {
 
 ## Step 4: Test Your Deployment
 
-1. Visit your Node server URL: `https://coaspire-server.onrender.com`
+1. Visit your Node server URL: `https://coaspire-backend-1.onrender.com`
 2. Test the API endpoints:
    - POST `/api/coastal-analysis` - Should return overlay and metrics
    - POST `/api/generate-report` - Should return timeline data
@@ -74,7 +74,7 @@ const resolveApiBaseUrl = () => {
 4. Render will show you DNS records to add in your get.tech control panel:
    - Type: `CNAME`
    - Name: `api`
-   - Value: `coaspire-server.onrender.com`
+   - Value: `coaspire-backend-1.onrender.com`
    - TTL: `3600` (1 hour)
 
 ### Option B: Direct DNS Configuration
@@ -84,7 +84,7 @@ In your get.tech control panel:
 2. Add a new CNAME record:
    - Type: `CNAME`
    - Name: `api` (will create api.digigoods.tech)
-   - Target: Your Render server URL without https:// (e.g., `coaspire-server.onrender.com`)
+   - Target: Your Render server URL without https:// (e.g., `coaspire-backend-1.onrender.com`)
    - TTL: `3600`
 3. Save and wait 5-30 minutes for DNS propagation
 
